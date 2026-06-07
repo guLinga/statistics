@@ -7,6 +7,7 @@ export default function ConfigPanel({
   config,
   onEdit,
   onCreate,
+  onShowWeekAbsence,
   onDutyEdit,
   onDutyCreate,
 }) {
@@ -17,7 +18,12 @@ export default function ConfigPanel({
   }
   if (isCalendarConfig(config)) {
     return (
-      <CalendarChart config={config} onEdit={onEdit} onCreate={onCreate} />
+      <CalendarChart
+        config={config}
+        onEdit={onEdit}
+        onCreate={onCreate}
+        onShowWeekAbsence={onShowWeekAbsence}
+      />
     );
   }
   return <AttendanceTimelineChart config={config} />;

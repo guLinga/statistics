@@ -8,7 +8,7 @@ import {
 } from "../lib/attendance.js";
 import DayPanel from "./DayPanel.jsx";
 
-export default function CalendarChart({ config, onEdit, onCreate }) {
+export default function CalendarChart({ config, onEdit, onCreate, onShowWeekAbsence }) {
   const people = (config.people || []).filter(Boolean);
   const records = [...(config.records || [])].sort(
     (a, b) => new Date(b.time) - new Date(a.time)
@@ -41,10 +41,23 @@ export default function CalendarChart({ config, onEdit, onCreate }) {
             <sup className="streak-badge inline">N</sup>
           </span>
         </div>
-        {onCreate && (
-          <button type="button" className="btn-create" onClick={onCreate}>
-            新建
-          </button>
+        {(onCreate || onShowWeekAbsence) && (
+          <div className="calendar-actions">
+            {onShowWeekAbsence && (
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={onShowWeekAbsence}
+              >
+                本周缺卡
+              </button>
+            )}
+            {onCreate && (
+              <button type="button" className="btn-create" onClick={onCreate}>
+                新建
+              </button>
+            )}
+          </div>
         )}
       </div>
       <div className="calendar-wrap calendar-wrap--attendance">

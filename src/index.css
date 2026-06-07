@@ -355,6 +355,157 @@ body {
   border-color: #1d4ed8;
 }
 
+.calendar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-secondary {
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.week-absence-modal {
+  width: min(560px, 100%);
+}
+
+.week-absence-header {
+  margin-bottom: 1rem;
+}
+
+.week-absence-header h3 {
+  margin-bottom: 0.25rem;
+}
+
+.week-absence-summary {
+  margin-top: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.week-absence-summary strong {
+  color: var(--text);
+}
+
+.week-absence-range {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.week-absence-list {
+  max-height: min(60vh, 520px);
+  overflow-y: auto;
+  margin-bottom: 0.5rem;
+  padding-right: 0.15rem;
+}
+
+.week-absence-day {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.week-absence-day.has-absence {
+  border-color: rgba(226, 72, 61, 0.35);
+}
+
+.week-absence-day-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(37, 99, 235, 0.06);
+  border-bottom: 1px solid var(--border);
+}
+
+.week-absence-day.has-absence .week-absence-day-row {
+  background: rgba(226, 72, 61, 0.08);
+}
+
+.week-absence-day.no-record .week-absence-day-row {
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.week-absence-day-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.week-absence-weekday {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.week-absence-date {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.week-absence-meta {
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.week-absence-day.has-absence .week-absence-meta {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.week-absence-detail {
+  display: block;
+  padding: 0.65rem 0.85rem;
+  background: #fff;
+  min-height: 2.25rem;
+}
+
+.week-absence-day.has-absence .week-absence-detail {
+  background: rgba(255, 251, 251, 1);
+  border-top: 1px dashed rgba(226, 72, 61, 0.25);
+}
+
+.week-absence-names {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text);
+  word-break: break-all;
+  margin: 0;
+}
+
+.week-absence-label {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.week-absence-detail .empty-muted {
+  font-size: 0.75rem;
+  margin: 0;
+}
+
 .calendar-legend > .legend-item {
   display: inline-flex;
   align-items: center;
@@ -731,9 +882,15 @@ body {
     align-items: stretch;
   }
 
-  .btn-create {
+  .btn-create,
+  .btn-secondary {
     width: 100%;
     text-align: center;
+  }
+
+  .calendar-actions {
+    width: 100%;
+    flex-direction: column;
   }
 
   .calendar-legend {
@@ -818,16 +975,64 @@ body {
     font-size: 0.7rem;
   }
 
-  .modal-overlay {
+  .modal-overlay:not(.modal-overlay--week-absence) {
     padding: 0.5rem;
     align-items: flex-end;
   }
 
-  .modal-box {
+  .modal-overlay--week-absence {
+    padding: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .modal-box:not(.week-absence-modal) {
     max-height: 92vh;
     width: 100%;
     border-radius: 12px 12px 0 0;
     padding: 1rem;
+  }
+
+  .week-absence-modal {
+    max-height: 92vh;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    padding: 1rem;
+  }
+
+  .week-absence-header h3 {
+    font-size: 1rem;
+  }
+
+  .week-absence-summary {
+    font-size: 0.78rem;
+  }
+
+  .week-absence-day {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .week-absence-detail {
+    display: block;
+    padding: 0.6rem 0.85rem 0.7rem;
+  }
+
+  .week-absence-names {
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+
+  .week-absence-modal .modal-actions {
+    flex-direction: column-reverse;
+    gap: 0.45rem;
+  }
+
+  .week-absence-modal .modal-actions button {
+    width: 100%;
+  }
+
+  .week-absence-actions .btn-secondary {
+    order: 2;
   }
 
   .modal-actions {
@@ -895,14 +1100,87 @@ body {
   .timeline-wrap--attendance .timeline-node .event-label {
     text-align: left;
   }
-
-  .timeline-wrap--attendance .people-list {
-    padding: 0;
-    font-size: 0.75rem;
-  }
 }
 
 @media (min-width: 769px) {
+  .calendar-toolbar {
+    align-items: flex-start;
+  }
+
+  .calendar-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .week-absence-modal {
+    width: min(760px, 92vw);
+    padding: 1.5rem;
+  }
+
+  .week-absence-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .week-absence-summary {
+    margin-top: 0;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .week-absence-list {
+    max-height: min(68vh, 680px);
+    gap: 0.5rem;
+  }
+
+  .week-absence-day {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .week-absence-day-row {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.35rem;
+    border-bottom: none;
+    border-right: 1px solid var(--border);
+    padding: 0.85rem 1rem;
+  }
+
+  .week-absence-meta {
+    white-space: normal;
+  }
+
+  .week-absence-detail {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    border-top: none;
+  }
+
+  .week-absence-day.has-absence .week-absence-detail {
+    border-top: none;
+  }
+
+  .week-absence-names {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .week-absence-modal .modal-actions {
+    margin-top: 0.75rem;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .week-absence-modal .modal-actions button {
+    width: auto;
+  }
+
   .timeline-wrap--scroll:has(.duty-node) .timeline-scroll-hint {
     display: block;
   }

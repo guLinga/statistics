@@ -6,10 +6,12 @@ import {
 } from "../api/supabase.js";
 import ConfigPanel from "../components/ConfigPanel.jsx";
 import EditModal, { emptyRecord } from "../components/EditModal.jsx";
+import WeekAbsenceModal from "../components/WeekAbsenceModal.jsx";
 
 export default function AttendancePage() {
   const { attendanceConfig, loading, error, refresh } = useConfigs();
   const [editContext, setEditContext] = useState(null);
+  const [weekAbsenceOpen, setWeekAbsenceOpen] = useState(false);
 
   const handleEdit = ({ meta, record }) => {
     setEditContext({ mode: "edit", meta, record, originalTime: record.time });
@@ -54,6 +56,12 @@ export default function AttendancePage() {
         onCreate={
           attendanceConfig.source === "supabase" ? handleCreate : undefined
         }
+        onShowWeekAbsence={() => setWeekAbsenceOpen(true)}
+      />
+      <WeekAbsenceModal
+        open={weekAbsenceOpen}
+        config={attendanceConfig}
+        onClose={() => setWeekAbsenceOpen(false)}
       />
       <EditModal
         open={Boolean(editContext)}
