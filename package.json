@@ -7,7 +7,7 @@
     "build": "vite build",
     "build:pages": "vite build && cp dist/index.html dist/404.html && node scripts/verify-dist.js",
     "preview": "vite preview",
-    "preview:pages": "vite preview --base /statistics/"
+    "preview:pages": "vite preview --base /"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",

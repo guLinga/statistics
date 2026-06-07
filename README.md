@@ -25,7 +25,7 @@ npm run dev
 
 ## 部署 GitHub Pages
 
-生产 base 路径已配置在 `.env.production`（`/statistics/`）。
+生产 base 路径在 `.env.production`（自定义域名用 `/`）。
 
 ```bash
 npm run build:pages
@@ -41,17 +41,20 @@ workflow 把 **dist 内容** 推到 `gh-pages` 分支。
 
 - **Source**：Deploy from a branch
 - **Branch**：`gh-pages` / **/(root)**
+- **Custom domain**：`statistics.1cor1514.site`（`public/CNAME` 会随构建一并部署）
 
 推送 `main` 后 Actions 自动构建部署。
 
 ### 访问地址
 
 ```
-https://gulinga.github.io/statistics/
-https://gulinga.github.io/statistics/attendance
+https://statistics.1cor1514.site/
+https://statistics.1cor1514.site/attendance
+https://statistics.1cor1514.site/duty
 ```
 
-不要访问 `https://gulinga.github.io/`（根域名不是本项目）。
+DNS 需添加 **CNAME**：`statistics` → `gulinga.github.io`（以你的 GitHub 用户名为准）。  
+建议开启 **Enforce HTTPS**。
 
 若仍报 `/src/main.jsx 404`，说明 Pages 还在用 `main` 分支源码，请改为 `gh-pages` 分支。
 
