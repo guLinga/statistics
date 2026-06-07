@@ -355,10 +355,18 @@ body {
   border-color: #1d4ed8;
 }
 
-.calendar-legend span {
+.calendar-legend > .legend-item {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+}
+
+.legend-label-long {
+  display: inline;
+}
+
+.legend-label-short {
+  display: none;
 }
 
 .day-panels {
@@ -668,4 +676,234 @@ body {
 
 .empty-muted {
   color: var(--muted);
+}
+
+.nav-label-short {
+  display: none;
+}
+
+.timeline-scroll-hint {
+  display: none;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.timeline-wrap--scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+
+.timeline-wrap--scroll .timeline-node {
+  scroll-snap-align: start;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem 0.75rem 2.5rem;
+  }
+
+  .page-title {
+    font-size: 1.15rem;
+  }
+
+  .page-nav .tab-btn {
+    font-size: 0.82rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  .nav-label-long {
+    display: none;
+  }
+
+  .nav-label-short {
+    display: inline;
+  }
+
+  .chart-block {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .calendar-toolbar,
+  .duty-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-create {
+    width: 100%;
+    text-align: center;
+  }
+
+  .calendar-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+  }
+
+  .calendar-legend > .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .legend-weekend .legend-sample {
+    flex: 1;
+    min-width: 0;
+    min-height: 1.5rem;
+    max-width: none;
+  }
+
+  .legend-label-long {
+    display: none;
+  }
+
+  .legend-label-short {
+    display: inline;
+    flex-shrink: 0;
+  }
+
+  .day-panels {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .day-panel {
+    min-height: 0;
+    border-radius: 10px;
+  }
+
+  .day-header {
+    padding: 0.65rem 2.75rem 0.65rem 0.85rem;
+    text-align: left;
+  }
+
+  .day-header .day-date {
+    font-size: 1.05rem;
+  }
+
+  .day-edit-btn {
+    top: 0.45rem;
+    right: 0.45rem;
+    padding: 0.28rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .day-people-grid {
+    padding: 0.65rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(3.1rem, 1fr));
+    gap: 0.4rem;
+  }
+
+  .person-tile {
+    min-width: 0;
+    width: 100%;
+    min-height: 2.55rem;
+    padding: 0.25rem 0.2rem;
+    font-size: 0.68rem;
+  }
+
+  .person-tile .person-name {
+    word-break: break-all;
+    line-height: 1.2;
+  }
+
+  .day-footer {
+    padding: 0.5rem 0.85rem;
+    text-align: left;
+    font-size: 0.7rem;
+  }
+
+  .modal-overlay {
+    padding: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .modal-box {
+    max-height: 92vh;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    padding: 1rem;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 0.45rem;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+
+  /* 时间轴：手机端改为纵向，避免横向过长 */
+  .timeline-wrap--duty,
+  .timeline-wrap--attendance {
+    overflow-x: visible;
+  }
+
+  .timeline-wrap--duty .timeline-scroll-hint {
+    display: none !important;
+  }
+
+  .timeline-wrap--duty .timeline,
+  .timeline-wrap--attendance .timeline {
+    flex-direction: column;
+    min-width: 0;
+    padding-top: 0;
+    gap: 1rem;
+  }
+
+  .timeline-wrap:has(.duty-node) .timeline {
+    padding-top: 0;
+  }
+
+  .timeline-wrap--duty .timeline-node.duty-node,
+  .timeline-wrap--attendance .timeline-node {
+    width: 100%;
+    padding-top: 0;
+    padding-left: 1.1rem;
+    margin-left: 0.35rem;
+    border-left: 3px solid var(--line);
+  }
+
+  .timeline-wrap--duty .timeline-node.duty-node::before,
+  .timeline-wrap--attendance .timeline-node::before {
+    display: none;
+  }
+
+  .timeline-wrap--duty .timeline-node.duty-node .dot,
+  .timeline-wrap--attendance .timeline-node .dot {
+    top: 0.65rem;
+    left: -1.15rem;
+    transform: translateX(-50%);
+  }
+
+  .timeline-wrap--duty .duty-edit-btn {
+    top: 0.35rem;
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+
+  .timeline-wrap--duty .timeline-node .time-label,
+  .timeline-wrap--duty .timeline-node .status-badge,
+  .timeline-wrap--attendance .timeline-node .time-label,
+  .timeline-wrap--attendance .timeline-node .event-label {
+    text-align: left;
+  }
+
+  .timeline-wrap--attendance .people-list {
+    padding: 0;
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .timeline-wrap--scroll:has(.duty-node) .timeline-scroll-hint {
+    display: block;
+  }
 }

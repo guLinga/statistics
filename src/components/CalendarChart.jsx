@@ -25,20 +25,21 @@ export default function CalendarChart({ config, onEdit, onCreate }) {
     <section className="chart-block">
       <div className="calendar-toolbar">
         <div className="calendar-legend">
-        <span>
-          <span className="person-tile present legend-sample">样</span> 已打卡
-        </span>
-        <span>
-          <span className="person-tile absent legend-sample">样</span> 缺席
-        </span>
-        <span>
-          <span className="person-tile present weekend legend-sample">样</span>{" "}
-          右半蓝=周六/日参与
-        </span>
-        <span>
-          最后一日连续缺席{" "}
-          <sup className="streak-badge inline">N</sup>
-        </span>
+          <span className="legend-item">
+            <span className="person-tile present legend-sample">样</span> 已打卡
+          </span>
+          <span className="legend-item">
+            <span className="person-tile absent legend-sample">样</span> 缺席
+          </span>
+          <span className="legend-item legend-weekend">
+            <span className="person-tile present weekend legend-sample">样</span>
+            <span className="legend-label legend-label-short">右半蓝=周六/日参与 ｜ 左半绿=每日打卡</span>
+          </span>
+          <span className="legend-item legend-streak">
+            <span className="legend-label legend-label-long">最后一日连续缺席</span>
+            <span className="legend-label legend-label-short">连续缺席</span>{" "}
+            <sup className="streak-badge inline">N</sup>
+          </span>
         </div>
         {onCreate && (
           <button type="button" className="btn-create" onClick={onCreate}>
@@ -46,7 +47,7 @@ export default function CalendarChart({ config, onEdit, onCreate }) {
           </button>
         )}
       </div>
-      <div className="calendar-wrap">
+      <div className="calendar-wrap calendar-wrap--attendance">
         <div className="day-panels">
           {records.length ? (
             records.map((record, index) => (

@@ -46,5 +46,5 @@ export const sortRecords = (records) =>
     const rb = getDutyRange(b);
     const ta = ra ? ra.start.getTime() : 0;
     const tb = rb ? rb.start.getTime() : 0;
-    return ta - tb;
+    return tb - ta;
   });

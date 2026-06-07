@@ -51,7 +51,7 @@ export default function AttendanceTimelineChart({ config }) {
 
   return (
     <section className="chart-block">
-      <div className="timeline-wrap">
+      <div className="timeline-wrap timeline-wrap--attendance timeline-wrap--scroll">
         <div className="timeline">
           {records.length ? (
             records.map((record) => (

@@ -9,7 +9,8 @@ export default function Layout() {
           to="/attendance"
           className={({ isActive }) => `tab-btn${isActive ? " active" : ""}`}
         >
-          每日读经打卡及周六日上线
+          <span className="nav-label-long">每日读经打卡及周六日上线</span>
+          <span className="nav-label-short">打卡</span>
         </NavLink>
         <NavLink
           to="/duty"

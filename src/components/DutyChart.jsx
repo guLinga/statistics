@@ -61,7 +61,7 @@ function formatSunday(sunday = {}) {
   return (
     <>
       <div>祷告：{formatTagList(sunday.pray)}</div>
-      <div className="duty-sub-row">分享：{formatTagValue(sunday.share)}</div>
+      <div className="duty-sub-row">分享：{formatTagList(sunday.share)}</div>
       <div className="duty-sub-row">
         <span className="slot-inline-title">歌曲</span>
         {formatSongTags(sunday.songs)}
@@ -114,7 +114,7 @@ function DutyNode({ record, onEdit }) {
       <span className={`status-badge ${status}`}>{dutyStatusLabel[status]}</span>
       <div className="people-list">
         <div className="duty-slot">
-          <span className="slot-title">周内分享（两天内）</span>
+          <span className="slot-title">周内分享（每两天）</span>
           {formatWeekdayShare(record.weekdayShare)}
         </div>
         <div className="duty-slot">
@@ -156,7 +156,10 @@ export default function DutyChart({ config, onEdit, onCreate }) {
           </button>
         )}
       </div>
-      <div className="timeline-wrap">
+      <div className="timeline-wrap timeline-wrap--duty timeline-wrap--scroll">
+        {sorted.length > 3 && (
+          <p className="timeline-scroll-hint">记录较多，可左右滑动查看</p>
+        )}
         <div className="timeline">
           {sorted.length ? (
             sorted.map((record) => (

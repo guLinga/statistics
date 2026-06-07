@@ -28,7 +28,7 @@ export default function DutyEditModal({ open, context, onClose, onSave }) {
       },
       sunday: {
         pray: parseNameList(fd.get("sundayPray")).join("、"),
-        share: String(fd.get("sundayShare") || "").trim(),
+        share: parseNameList(fd.get("sundayShare")).join("、"),
         songs: [0, 1].map((i) => ({
           name: String(fd.get(`songName${i}`) || "").trim(),
         })),
@@ -116,8 +116,11 @@ export default function DutyEditModal({ open, context, onClose, onSave }) {
           />
         </label>
         <label>
-          <span>周日分享</span>
-          <input name="sundayShare" defaultValue={record.sunday?.share || ""} />
+          <span>周日分享，每行一个或逗号分隔</span>
+          <textarea
+            name="sundayShare"
+            defaultValue={namesToText(parseNameList(record.sunday?.share || ""))}
+          />
         </label>
         <fieldset className="modal-fieldset">
           <legend>周日歌曲</legend>
