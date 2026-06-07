@@ -25,44 +25,35 @@ npm run dev
 
 ## 部署 GitHub Pages
 
-项目站地址形如 `https://<用户名>.github.io/<仓库名>/`，需配置 **base 路径**。
-
-1. 复制 `.env.production.example` 为 `.env.production`
-2. 把 `VITE_BASE_PATH` 改成你的仓库名，例如仓库叫 `statistics`：
-
-```bash
-VITE_BASE_PATH=/statistics/
-```
-
-3. 打包（会生成 `404.html` 以支持前端路由刷新）：
+生产 base 路径已配置在 `.env.production`（`/statistics/`）。
 
 ```bash
 npm run build:pages
 ```
 
-4. 将 `dist/` 目录部署到 GitHub Pages
+会生成 `dist/` 并校验不含 `/src/main.jsx`。
 
 ### GitHub Actions 自动部署
 
-已包含 `.github/workflows/deploy-pages.yml`。在仓库 **Settings → Pages → Build and deployment → Source** 选 **GitHub Actions**。
+workflow 把 **dist 内容** 推到 `gh-pages` 分支。
 
-在 **Settings → Secrets and variables → Actions** 添加（可选）：
+**Settings → Pages** 配置：
 
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_PUBLISHABLE_KEY`
+- **Source**：Deploy from a branch
+- **Branch**：`gh-pages` / **/(root)**
 
-推送 `main`/`master` 分支后会自动构建，base 路径使用 `/仓库名/`。
+推送 `main` 后 Actions 自动构建部署。
 
-### 本地预览 Pages 路径
+### 访问地址
 
-```bash
-cp .env.production.example .env.production
-# 编辑 VITE_BASE_PATH
-npm run build:pages
-npm run preview:pages
+```
+https://gulinga.github.io/statistics/
+https://gulinga.github.io/statistics/attendance
 ```
 
-访问 `http://localhost:4173/statistics/`（路径与 `VITE_BASE_PATH` 一致）。
+不要访问 `https://gulinga.github.io/`（根域名不是本项目）。
+
+若仍报 `/src/main.jsx 404`，说明 Pages 还在用 `main` 分支源码，请改为 `gh-pages` 分支。
 
 ## 数据源
 
