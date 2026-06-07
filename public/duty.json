@@ -1,0 +1,100 @@
+[
+  {
+    "title": "安排",
+    "_字段说明": {
+      "说明": "以下为英文字段的中文含义，仅作注释，程序不读取此块",
+      "title": "标签页标题",
+      "records": "每周安排列表，每一项是一周",
+      "time": "时间范围 [开始日期, 结束日期]，自动判断：未执行 / 正在执行 / 执行完",
+      "weekdayShare": "周内两天内的分享人（数组，可多人）",
+      "checkIn": "督促打卡负责人",
+      "checkInPublish": "打卡任务发布人",
+      "saturday": "周六安排",
+      "saturday.sing": "周六唱歌的人",
+      "saturday.host": "周六主持的人",
+      "sunday": "周日安排",
+      "sunday.pray": "周日祷告的人",
+      "sunday.share": "周日分享的人（可与祷告同时填写）",
+      "sunday.songs": "周日歌曲，一般两首",
+      "sunday.songs.name": "歌名",
+      "sunday.songs.url": "歌曲链接"
+    },
+    "records": [
+      {
+        "time": ["2026-05-24", "2026-05-31"],
+        "weekdayShare": ["刘恩波", "李迦茹", "来现慧"],
+        "checkIn": "李迦茹",
+        "checkInPublish": "徐佳恩",
+        "saturday": { "sing": "段俊熙（他必带领我明天的路）", "host": "徐佳恩" },
+        "sunday": {
+          "pray": "敬华姨、赵正杨",
+          "share": "",
+          "songs": [
+            { "name": "我的生命献给你", "url": "" },
+            { "name": "祢寶血為我而流", "url": "" }
+          ]
+        }
+      },
+      {
+        "time": ["2026-06-01", "2026-06-07"],
+        "weekdayShare": ["赵正杨", "宋袁峰", "靖智慧"],
+        "checkIn": "刘恩波",
+        "checkInPublish": "赵正杨",
+        "saturday": { "sing": "李涵（盟约）", "host": "赵正杨" },
+        "sunday": {
+          "pray": "",
+          "share": "",
+          "songs": [
+            { "name": "", "url": "" },
+            { "name": "", "url": "" }
+          ]
+        }
+      },
+      {
+        "time": ["2026-06-08", "2026-06-14"],
+        "weekdayShare": [""],
+        "checkIn": "",
+        "checkInPublish": "",
+        "saturday": { "sing": "", "host": "" },
+        "sunday": {
+          "pray": "",
+          "share": "",
+          "songs": [
+            { "name": "", "url": "" },
+            { "name": "", "url": "" }
+          ]
+        }
+      },
+      {
+        "time": ["2026-06-15", "2026-06-21"],
+        "weekdayShare": ["", ""],
+        "checkIn": "",
+        "checkInPublish": "",
+        "saturday": { "sing": "", "host": "" },
+        "sunday": {
+          "pray": "",
+          "share": "",
+          "songs": [
+            { "name": "", "url": "" },
+            { "name": "", "url": "" }
+          ]
+        }
+      },
+      {
+        "time": ["2026-06-22", "2026-06-28"],
+        "weekdayShare": [""],
+        "checkIn": "",
+        "checkInPublish": "",
+        "saturday": { "sing": "", "host": "" },
+        "sunday": {
+          "pray": "",
+          "share": "",
+          "songs": [
+            { "name": "", "url": "" },
+            { "name": "", "url": "" }
+          ]
+        }
+      }
+    ]
+  }
+]
